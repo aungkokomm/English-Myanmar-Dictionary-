@@ -1,11 +1,12 @@
 ; Inno Setup Script for AKK En-to-MM Dictionary
-; Generated for .NET 8 WPF Application
+; .NET 8 WPF Application with Desktop Shortcut Support
+; Installs to Program Files with full uninstall support
 
 #define MyAppName "AKK En-to-MM Dictionary"
 #define MyAppVersion "1.0.0"
 #define MyAppPublisher "AKK Dictionary Team"
-#define MyAppExeName "AKK En-to-MM Dictionary.exe"
-#define MyAppUrl "https://github.com"
+#define MyAppExeName "AkkDictionary.exe"
+#define MyAppUrl "https://github.com/aungkokomm/English-Myanmar-Dictionary-"
 #define SourcePath "bin\Release\net8.0-windows\win-x64\publish"
 
 [Setup]
@@ -16,9 +17,10 @@ AppPublisher={#MyAppPublisher}
 AppPublisherURL={#MyAppUrl}
 AppSupportURL={#MyAppUrl}
 AppUpdatesURL={#MyAppUrl}
-DefaultDirName={autopf}\{#MyAppName}
+AppComments=A comprehensive English to Myanmar dictionary powered by .NET 8, WPF, and SQLite
+DefaultDirName={autopf}\AkkDictionary
 DefaultGroupName={#MyAppName}
-AllowNoIcons=yes
+AllowNoIcons=no
 LicenseFile=LICENSE.txt
 OutputDir=bin\Installers
 OutputBaseFilename=AKK_En-to-MM_Dictionary_Setup_v{#MyAppVersion}
@@ -29,25 +31,35 @@ UsePreviousAppDir=yes
 DisableReadyPage=no
 UninstallDisplayName={#MyAppName}
 VersionInfoVersion={#MyAppVersion}
+PrivilegesRequired=admin
+ArchitecturesInstallIn64BitMode=x64
 
 [Languages]
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "{cm:CreateDesktopIconTask}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
-Name: "quicklaunchicon"; Description: "{cm:CreateQuickLaunchIconTask}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked and compat2and3
-Name: "startmenu"; Description: "Create Start Menu shortcut"; GroupDescription: "{cm:AdditionalIcons}"; Flags: checked
+Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Shortcuts:"; Flags: checked
+Name: "startmenu"; Description: "Create Start Menu shortcut"; GroupDescription: "Shortcuts:"; Flags: checked
+Name: "quicklaunchicon"; Description: "Create Quick Launch shortcut"; GroupDescription: "Shortcuts:"; Flags: unchecked
 
 [Files]
+; Main executable
 Source: "{#SourcePath}\{#MyAppExeName}"; DestDir: "{app}"; Flags: ignoreversion
+; All runtime files and dependencies
 Source: "{#SourcePath}\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
-Source: "dictionary.db"; DestDir: "{app}"; Flags: ignoreversion
-; NOTE: Add LICENSE file if it exists
-Source: "LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion; Check: FileExists('{#SourcePath}\..\..\..\LICENSE.txt')
+; Database file
+Source: "dictionary.db"; DestDir: "{app}"; Flags: ignoreversion onlyifdoesntexist
+; License file
+Source: "LICENSE.txt"; DestDir: "{app}"; Flags: ignoreversion
 
 [Icons]
-Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFileName: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"
-Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; IconFileName: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; Tasks: desktopicon
+; Start Menu shortcut
+Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; Tasks: startmenu
+; Desktop shortcut
+Name: "{autodesktop}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; Tasks: desktopicon
+; Quick Launch shortcut
+Name: "{userappdata}\Microsoft\Internet Explorer\Quick Launch\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"; WorkingDir: "{app}"; Tasks: quicklaunchicon
+; Uninstall shortcut
 Name: "{group}\Uninstall {#MyAppName}"; Filename: "{uninstallexe}"
 
 [Run]

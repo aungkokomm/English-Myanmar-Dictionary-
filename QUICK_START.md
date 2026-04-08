@@ -2,14 +2,7 @@
 
 ## Installation
 
-### Option 1: Using the Installer (Recommended)
-1. Download `AKK_En-to-MM_Dictionary_Setup_v1.0.0.exe`
-2. Double-click to run the installer
-3. Follow the installation wizard
-4. The application will automatically launch after installation
-5. Shortcuts will be created on your desktop and Start Menu
-
-### Option 2: Portable Executable
+### Portable Executable
 1. Download `AKK En-to-MM Dictionary.exe`
 2. Place it anywhere on your computer (Desktop, Documents, USB drive, etc.)
 3. Double-click to run - no installation required!

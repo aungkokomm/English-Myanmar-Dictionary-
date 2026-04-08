@@ -11,6 +11,7 @@ A fast, modern English ↔ Myanmar dictionary application built with .NET 8 and 
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-green)
 
 ---
+<img width="1662" height="804" alt="image" src="https://github.com/user-attachments/assets/0ccb68e3-510f-4ae3-a775-ab24c523545b" />
 
 ## ✨ Features
 
@@ -32,9 +33,10 @@ A fast, modern English ↔ Myanmar dictionary application built with .NET 8 and 
 ### For Users
 
 **Download and Run (Easiest)**
-1. Download: [`AKK En-to-MM Dictionary.exe`](https://github.com/aungkokomm/AkkDictionaryApp/releases)
-2. Double-click to run
-3. Start searching!
+1. Clone Roposistory 
+2. Double-click Build.bat wait till it finishes.
+3. After built complete, in bin\Release\net8.0-windows there will be AkkDictionary.exe
+3. Run it and searching!
 
 **System Requirements:**
 - Windows 10 or later (64-bit)
@@ -364,7 +366,7 @@ Please consider:
 ---
 
 **Status**: ✅ Production Ready  
-**Last Updated**: March 2024  
+**Last Updated**: March 2026  
 **License**: MIT
 
 ---
