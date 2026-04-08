@@ -38,8 +38,8 @@ ArchitecturesInstallIn64BitMode=x64
 Name: "english"; MessagesFile: "compiler:Default.isl"
 
 [Tasks]
-Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Shortcuts:"; Flags: checked
-Name: "startmenu"; Description: "Create Start Menu shortcut"; GroupDescription: "Shortcuts:"; Flags: checked
+Name: "desktopicon"; Description: "Create a desktop shortcut"; GroupDescription: "Shortcuts:"; Flags: 
+Name: "startmenu"; Description: "Create Start Menu shortcut"; GroupDescription: "Shortcuts:"; Flags: 
 Name: "quicklaunchicon"; Description: "Create Quick Launch shortcut"; GroupDescription: "Shortcuts:"; Flags: unchecked
 
 [Files]
