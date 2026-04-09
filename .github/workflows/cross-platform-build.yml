@@ -24,24 +24,33 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: '10.0.x'
+          dotnet-version: '8.0.x'
 
       - name: Install MAUI Workload
         run: dotnet workload install maui
+
+      - name: Clean project
+        working-directory: ./AkkDictionary.MAUI
+        run: dotnet clean
 
       - name: Restore dependencies
         working-directory: ./AkkDictionary.MAUI
         run: dotnet restore
 
-      - name: Build Android APK
+      - name: Build Android APK (Release)
         working-directory: ./AkkDictionary.MAUI
-        run: dotnet publish -f net10.0-android -c Release -p:AndroidPackageFormat=apk -p:AndroidKeyStore=false
+        run: dotnet publish -f net8.0-android -c Release -p:AndroidPackageFormat=apk -p:AndroidKeyStore=false --no-restore
+
+      - name: List build outputs
+        working-directory: ./AkkDictionary.MAUI
+        run: find . -name "*.apk" -type f
 
       - name: Upload Android APK
         uses: actions/upload-artifact@v4
         with:
           name: android-apk
-          path: AkkDictionary.MAUI/bin/Release/net10.0-android/publish/*.apk
+          path: AkkDictionary.MAUI/bin/Release/net8.0-android/publish/*.apk
+          if-no-files-found: warn
       
       - name: Create DMG
         run: |
