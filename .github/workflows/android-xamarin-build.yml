@@ -26,17 +26,31 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: '9.x'
-      
+
       - name: Install Android Workload
-        run: dotnet workload install android
-      
+        run: dotnet workload install android --skip-manifest-update
+
+      - name: Verify Android Workload
+        run: dotnet workload list
+
+      - name: Diagnostic Information
+        run: |
+          echo "=== Java Version ===" 
+          java -version
+          echo "=== .NET Version ==="
+          dotnet --version
+          echo "=== .NET Workloads ==="
+          dotnet workload list
+          echo "=== Android SDK Info ==="
+          ls -la $ANDROID_HOME/platforms/ 2>/dev/null || echo "ANDROID_HOME not set or empty"
+
       - name: Restore NuGet packages
         working-directory: ./AkkDictionary.Android
-        run: dotnet restore
-      
+        run: dotnet restore AkkDictionary.Android.csproj -v diagnostic
+
       - name: Build APK (Release)
         working-directory: ./AkkDictionary.Android
-        run: dotnet publish -f net9.0-android -c Release -p:AndroidPackageFormat=apk -p:AndroidKeyStore=false --no-restore
+        run: dotnet publish -f net9.0-android -c Release -p:AndroidPackageFormat=apk -p:AndroidKeyStore=false --no-restore -v diagnostic 2>&1 | tee build.log
       
       - name: List Generated APK
         run: find . -name "*.apk" -type f -exec ls -lh {} \;
