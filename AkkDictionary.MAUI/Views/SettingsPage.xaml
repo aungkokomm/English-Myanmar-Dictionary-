@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AkkDictionary.MAUI.Views.SettingsPage"
+             Title="Settings"
+             BackgroundColor="{StaticResource PageBackgroundColor}">
+
+    <VerticalStackLayout Spacing="15" Padding="15">
+        
+        <!-- Font Family -->
+        <VerticalStackLayout Spacing="5">
+            <Label Text="UI Font Family:" 
+                   FontSize="14" 
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource TextColor}" />
+            <Picker ItemsSource="{Binding FontFamilies}"
+                    SelectedItem="{Binding SelectedFont}"
+                    Title="Choose font" />
+        </VerticalStackLayout>
+
+        <!-- Font Scale -->
+        <VerticalStackLayout Spacing="5">
+            <Label Text={Binding FontScaleLabel, StringFormat="Font Size: {0}x"} 
+                   FontSize="14" 
+                   FontAttributes="Bold"
+                   TextColor="{StaticResource TextColor}" />
+            <Slider Minimum="0.8" 
+                    Maximum="1.5" 
+                    Value="{Binding FontScale}"
+                    StepValue="0.1" />
+        </VerticalStackLayout>
+
+        <!-- Default Reverse Search -->
+        <CheckBox IsChecked="{Binding DefaultReverseSearch}"
+                  Content="Default to Myanmar→English search"
+                  VerticalOptions="Start" />
+
+        <!-- Enable Suggestions -->
+        <CheckBox IsChecked="{Binding EnableSuggestions}"
+                  Content="Enable search suggestions"
+                  VerticalOptions="Start" />
+
+        <!-- Save Button -->
+        <Button Text="Save Settings"
+                Command="{Binding SaveCommand}"
+                BackgroundColor="{StaticResource SecondaryColor}"
+                TextColor="White"
+                Padding="10"
+                CornerRadius="5" />
+
+        <!-- Reset Button -->
+        <Button Text="Reset to Defaults"
+                Command="{Binding ResetCommand}"
+                BackgroundColor="#E53E3E"
+                TextColor="White"
+                Padding="10"
+                CornerRadius="5" />
+
+        <BoxView HeightRequest="1" Color="#E0E0E0" />
+
+        <Label Text="Settings are saved locally on your device."
+               FontSize="12"
+               TextColor="{StaticResource LightTextColor}"
+               HorizontalTextAlignment="Center" />
+
+    </VerticalStackLayout>
+
+</ContentPage>

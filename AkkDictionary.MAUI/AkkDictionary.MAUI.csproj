@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+	<PropertyGroup>
+		<TargetFrameworks>net8.0-maccatalyst;net8.0-android</TargetFrameworks>
+		<TargetFrameworks Condition="$([msbuild]::GetTargetPlatformIdentifier('$(TargetFrameworks)')) == 'windows'">$(TargetFrameworks);net8.0-windows10.0.19041.0</TargetFrameworks>
+		<UseMaui>true</UseMaui>
+		<SingleProject>true</SingleProject>
+
+		<!-- Display name -->
+		<ApplicationTitle>AKK En-to-MM Dictionary</ApplicationTitle>
+
+		<!-- App Identifier -->
+		<ApplicationId>com.akk.dictionary</ApplicationId>
+
+		<!-- Versions -->
+		<ApplicationDisplayVersion>1</ApplicationDisplayVersion>
+		<ApplicationVersion>1</ApplicationVersion>
+
+		<SupportedOSPlatformVersion Condition="$([msbuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'maccatalyst'">14.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([msbuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'android'">21.0</SupportedOSPlatformVersion>
+		<SupportedOSPlatformVersion Condition="$([msbuild]::GetTargetPlatformIdentifier('$(TargetFramework)')) == 'windows'">10.0.17763.0</SupportedOSPlatformVersion>
+
+		<DefineConstants>$(DefineConstants);DISABLE_SAFEAREA</DefineConstants>
+
+		<!-- App Icon -->
+		<MauiIcon Include="Resources/AppIcon/appicon.svg" />
+
+		<!-- Splash Screen -->
+		<MauiSplashScreen Include="Resources/Splash/splash.svg" Color="#2D3748" />
+
+		<!-- Images -->
+		<MauiImage Include="Resources/Images/*.png" />
+
+		<!-- Custom Fonts -->
+		<MauiFont Include="Resources/Fonts/*.ttf" />
+
+		<!-- Raw Assets (if you have any) -->
+		<MauiAsset Include="Resources/Raw/**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
+	</PropertyGroup>
+
+	<ItemGroup>
+		<!-- .NET MAUI -->
+		<PackageReference Include="Microsoft.Maui.Controls" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Maui.Controls.Hosting" Version="8.0.0" />
+		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="8.0.0" />
+		
+		<!-- SQLite for MAUI -->
+		<PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.0" />
+		
+		<!-- Essential Services -->
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.0" />
+	</ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-maccatalyst'))">
+		<!-- macOS Specific -->
+	</ItemGroup>
+
+	<ItemGroup Condition="$(TargetFramework.StartsWith('net8.0-android'))">
+		<!-- Android Specific -->
+	</ItemGroup>
+
+</Project>
