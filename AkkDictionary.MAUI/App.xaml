@@ -1,24 +1,14 @@
-<?xml version = "1.0" encoding = "UTF-8" ?>
-<Application
-    x:Class="AkkDictionary.MAUI.App"
-    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
-
+﻿<?xml version = "1.0" encoding = "UTF-8" ?>
+<Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:AkkDictionary.MAUI"
+             x:Class="AkkDictionary.MAUI.App">
     <Application.Resources>
         <ResourceDictionary>
-            <Color x:Key="PageBackgroundColor">#FFFFFF</Color>
-            <Color x:Key="PrimaryColor">#2D3748</Color>
-            <Color x:Key="SecondaryColor">#4299E1</Color>
-            <Color x:Key="TextColor">#333333</Color>
-            <Color x:Key="LightTextColor">#666666</Color>
-
-            <Style TargetType="Page"
-                   ApplyToDerivedTypes="True">
-                <Setter Property="BackgroundColor"
-                        Value="{StaticResource PageBackgroundColor}" />
-            </Style>
-
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
+                <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
-
 </Application>
