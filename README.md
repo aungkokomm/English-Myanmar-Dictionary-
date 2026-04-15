@@ -11,7 +11,8 @@ A fast, modern, simple English ↔ Myanmar dictionary application built with .NE
 ![Status](https://img.shields.io/badge/Status-Production%20Ready-green)
 
 ---
-<img width="1662" height="804" alt="image" src="https://github.com/user-attachments/assets/0ccb68e3-510f-4ae3-a775-ab24c523545b" />
+<img width="1370" height="869" alt="image" src="https://github.com/user-attachments/assets/ff6ef6b5-49b4-43d4-a9e2-71f57c4f3491" />
+
 
 <img width="831" height="1801" alt="image" src="https://github.com/user-attachments/assets/6d7627bc-d39c-4828-b614-6f2d9c0058d4" />
 
