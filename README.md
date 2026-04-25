@@ -17,6 +17,22 @@ A fast, modern, simple English ↔ Myanmar dictionary application built with .NE
 
 <img width="831" height="1801" alt="image" src="https://github.com/user-attachments/assets/6d7627bc-d39c-4828-b614-6f2d9c0058d4" />
 
+## 📱 Available Platforms
+
+### Windows Desktop (v1.1.0)
+* **Smart Fuzzy Search:** The search engine computes edit distances to suggest the closest matches if your query returns zero results.
+* **Instant Dark Mode:** Toggle between Light and Dark themes with zero flickering.
+* **Native Text-to-Speech:** Listen to accurate pronunciations instantly using the built-in Windows speech engine (no internet required).
+* **Customizable Layout:** Adjust the resizable split pane; your preferred window dimensions and pane width are remembered between sessions.
+* **Interactive Definitions:** Click on "See also" cross-references to jump directly to related vocabulary.
+* **Bookmarks & Export:** Star entries to save them, or copy the headword, part-of-speech, and all numbered definitions to your clipboard with a single click.
+* **Optimized Search:** Typing rapidly only queries the database once after a 300ms pause.
+
+### Android
+* **On-the-Go Translation:** Access the complete offline database from your mobile device.
+* **Optimized Performance:** Shares the same fast search debounce logic as the desktop app for a smooth typing experience.
+* **Touch-Friendly Interface:** Clean layout designed specifically for mobile screens.
+
 ## ✨ Features
 
 - 🔍 **Fast English→Myanmar Search** - Instantly find word definitions
@@ -293,13 +309,7 @@ Please ensure:
 - ✅ Customizable UI
 - ✅ Persistent settings
 
-### Planned Features (v1.1+)
-- [ ] Search history
-- [ ] Bookmarks/favorites
-- [ ] Multi-language support
-- [ ] Advanced search filters
-- [ ] Dictionary export
-- [ ] Cloud sync support
+
 
 ---
 
@@ -319,7 +329,7 @@ Please ensure:
 
 ## 🎯 Version History
 
-### v1.0.0 (March 2024)
+### v1.0.0 (March 2026)
 - Initial release
 - Full dictionary search capabilities
 - Import from Excel and SQLite
@@ -328,6 +338,15 @@ Please ensure:
 - Complete documentation
 
 ---
+### v1.1.0 (April 2026)
+* **Smart Fuzzy Search:** The search engine computes edit distances to suggest the closest matches if your query returns zero results.
+* **Instant Dark Mode:** Toggle between Light and Dark themes with zero flickering.
+* **Native Text-to-Speech:** Listen to accurate pronunciations instantly using the built-in Windows speech engine (no internet required).
+* **Customizable Layout:** Adjust the resizable split pane; your preferred window dimensions and pane width are remembered between sessions.
+* **Interactive Definitions:** Click on "See also" cross-references to jump directly to related vocabulary.
+* **Bookmarks & Export:** Star entries to save them, or copy the headword, part-of-speech, and all numbered definitions to your clipboard with a single click.
+* **Optimized Search:** Typing rapidly only queries the database once after a 300ms pause.
+
 
 ## 🙏 Acknowledgments
 
@@ -369,7 +388,7 @@ Please consider:
 ---
 
 **Status**: ✅ Production Ready  
-**Last Updated**: March 2026  
+**Last Updated**: April 2026  
 **License**: MIT
 
 ---
