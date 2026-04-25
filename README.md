@@ -302,16 +302,8 @@ Please ensure:
 
 ## 🗺️ Roadmap
 
-### Version 1.0 (Current)
-- ✅ English↔Myanmar dictionary search
-- ✅ Reverse search capability
-- ✅ Excel/SQLite import
-- ✅ Customizable UI
-- ✅ Persistent settings
-
-
-
----
+### Version 1.1.0 (Current)
+General improvements and database updates that will be achieved at the third quarter of this year.
 
 ## 📊 Project Statistics
 
