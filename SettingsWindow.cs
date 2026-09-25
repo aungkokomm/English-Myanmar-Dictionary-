@@ -1,5 +1,4 @@
 using System.Windows;
-using System.IO;
 
 namespace AkkDictionaryApp
 {
@@ -11,7 +10,7 @@ namespace AkkDictionaryApp
         public SettingsWindow()
         {
             InitializeComponent();
-            _settingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.json");
+            _settingsPath = AppSettings.DefaultPath;
             _settings = AppSettings.Load(_settingsPath);
             LoadSettings();
         }

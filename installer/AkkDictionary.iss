@@ -47,7 +47,3 @@ Name: "{autodesktop}\{#MyAppName}";    Filename: "{app}\{#MyAppExeName}"; Tasks:
 
 [Run]
 Filename: "{app}\{#MyAppExeName}"; Description: "Launch {#MyAppName}"; Flags: nowait postinstall skipifsilent
-
-[UninstallDelete]
-; Remove settings file written by the app on first run
-Type: files; Name: "{app}\settings.json"

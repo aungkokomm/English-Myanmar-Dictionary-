@@ -183,9 +183,13 @@ namespace AkkDictionaryApp
                 SearchHistory.RemoveRange(20, SearchHistory.Count - 20);
         }
 
+        // Not the install folder: Program Files is read-only for normal users.
+        public static string DefaultPath { get; } = Path.Combine(
+            Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "AkkDictionary", "settings.json");
+
         public static AppSettings Load(string path)
         { try{ if (File.Exists(path)){ var json=System.Text.Json.JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(path)); if (json!=null) return json; } } catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Settings] Load failed: {ex.Message}"); } return new AppSettings(); }
         public static void Save(AppSettings s, string path)
-        { try{ var json=System.Text.Json.JsonSerializer.Serialize(s, new System.Text.Json.JsonSerializerOptions{ WriteIndented=true }); File.WriteAllText(path, json);} catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Settings] Save failed: {ex.Message}"); } }
+        { try{ Directory.CreateDirectory(Path.GetDirectoryName(path)!); var json=System.Text.Json.JsonSerializer.Serialize(s, new System.Text.Json.JsonSerializerOptions{ WriteIndented=true }); File.WriteAllText(path, json);} catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Settings] Save failed: {ex.Message}"); } }
     }
 }

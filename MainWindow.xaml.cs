@@ -39,7 +39,7 @@ namespace AkkDictionaryApp
 
         public MainWindow()
         {
-            _settingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "settings.json");
+            _settingsPath = AppSettings.DefaultPath;
             _settings = AppSettings.Load(_settingsPath);
             _dbPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "dictionary.db");
 
