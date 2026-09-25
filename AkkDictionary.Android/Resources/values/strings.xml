@@ -1,5 +1,11 @@
 <resources>
     <string name="app_name">AKK Dictionary</string>
-    <string name="search_hint">English or Myanmar...</string>
+    <string name="search_hint">English or Myanmar…</string>
     <string name="search_button">Search</string>
+    <string name="reverse_search">Search in definitions (MM→EN)</string>
+    <string name="loading">Loading…</string>
+    <string name="no_results">No results found</string>
+    <string name="tap_hint">Tap a word to see definitions</string>
+    <string name="definitions">Definitions</string>
+    <string name="initializing">Initialising dictionary…</string>
 </resources>

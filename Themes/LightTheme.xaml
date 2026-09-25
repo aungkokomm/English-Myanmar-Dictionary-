@@ -1,0 +1,63 @@
+<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+                    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+
+    <!-- Backgrounds -->
+    <SolidColorBrush x:Key="WindowBg"       Color="#FAFAFA"/>
+    <SolidColorBrush x:Key="SurfaceBg"      Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="SearchBg"       Color="#F5F5F5"/>
+    <SolidColorBrush x:Key="SearchBorder"   Color="#DDDDDD"/>
+    <SolidColorBrush x:Key="ListBg"         Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ListAltBg"      Color="#F8F8FB"/>
+    <SolidColorBrush x:Key="ListSelectedBg" Color="#E3F2FD"/>
+    <SolidColorBrush x:Key="SplitterBg"     Color="#E0E0E0"/>
+    <SolidColorBrush x:Key="QueryLabelBg"   Color="#E8F0FE"/>
+    <SolidColorBrush x:Key="StatusBg"       Color="#F0F0F0"/>
+    <SolidColorBrush x:Key="FuzzyBg"        Color="#FFF8E1"/>
+    <SolidColorBrush x:Key="DetailPaneBg"   Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="SuggestBg"      Color="#FFFFFF"/>
+    <SolidColorBrush x:Key="ButtonBg"       Color="#E0E0E0"/>
+    <SolidColorBrush x:Key="ButtonHoverBg"  Color="#D0D0D0"/>
+
+    <!-- Text -->
+    <SolidColorBrush x:Key="TextPrimary"    Color="#212121"/>
+    <SolidColorBrush x:Key="TextSecondary"  Color="#757575"/>
+    <SolidColorBrush x:Key="TextHeadword"   Color="#1A237E"/>
+    <SolidColorBrush x:Key="TextAccent"     Color="#1565C0"/>
+    <SolidColorBrush x:Key="TextFuzzy"      Color="#E65100"/>
+    <SolidColorBrush x:Key="StatusFg"       Color="#555555"/>
+
+    <!-- Accent -->
+    <SolidColorBrush x:Key="AccentBrush"    Color="#1565C0"/>
+    <SolidColorBrush x:Key="DividerBrush"   Color="#E0E0E0"/>
+
+    <!-- ListView item style -->
+    <Style x:Key="ListViewItemStyle" TargetType="ListViewItem">
+        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+        <Setter Property="Padding" Value="4,3"/>
+        <Style.Triggers>
+            <Trigger Property="IsSelected" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ListSelectedBg}"/>
+                <Setter Property="Foreground" Value="{DynamicResource TextPrimary}"/>
+            </Trigger>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource QueryLabelBg}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+    <!-- Tool button style (Speak, Copy, Bookmark) -->
+    <Style x:Key="ToolBtn" TargetType="Button">
+        <Setter Property="Background"   Value="Transparent"/>
+        <Setter Property="BorderBrush"  Value="{DynamicResource DividerBrush}"/>
+        <Setter Property="BorderThickness" Value="1"/>
+        <Setter Property="Padding"      Value="8,4"/>
+        <Setter Property="Cursor"       Value="Hand"/>
+        <Setter Property="Margin"       Value="4,0,0,0"/>
+        <Style.Triggers>
+            <Trigger Property="IsMouseOver" Value="True">
+                <Setter Property="Background" Value="{DynamicResource ButtonHoverBg}"/>
+            </Trigger>
+        </Style.Triggers>
+    </Style>
+
+</ResourceDictionary>

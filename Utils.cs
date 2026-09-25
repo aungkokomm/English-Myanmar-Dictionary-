@@ -7,6 +7,7 @@ using System.Data;
 using System.IO;
 using System.Linq;
 using System.Text.RegularExpressions;
+using System.Threading.Tasks;
 
 namespace AkkDictionaryApp
 {
@@ -39,6 +40,48 @@ namespace AkkDictionaryApp
 
         public static string SearchKey(string w)
         { w=(w ?? string.Empty).ToLowerInvariant(); w=NonAlnumForSearch.Replace(w, " "); return CollapseSpaces(w); }
+
+        /// <summary>Levenshtein edit distance between two strings.</summary>
+        public static int EditDistance(string a, string b)
+        {
+            if (string.IsNullOrEmpty(a)) return b?.Length ?? 0;
+            if (string.IsNullOrEmpty(b)) return a.Length;
+            var dp = new int[a.Length + 1, b.Length + 1];
+            for (int i = 0; i <= a.Length; i++) dp[i, 0] = i;
+            for (int j = 0; j <= b.Length; j++) dp[0, j] = j;
+            for (int i = 1; i <= a.Length; i++)
+                for (int j = 1; j <= b.Length; j++)
+                    dp[i, j] = a[i - 1] == b[j - 1] ? dp[i - 1, j - 1]
+                                : 1 + Math.Min(dp[i - 1, j - 1], Math.Min(dp[i - 1, j], dp[i, j - 1]));
+            return dp[a.Length, b.Length];
+        }
+
+        /// <summary>Find headwords within maxDistance edits of query. Candidates are filtered by first letter for speed.</summary>
+        public static async Task<List<string>> FuzzySearchAsync(string dbPath, string query, int maxDistance = 2, int limit = 10)
+        {
+            var key = SearchKey(query);
+            if (key.Length < 3) return new List<string>();
+            if (!File.Exists(dbPath)) return new List<string>();
+
+            var results = new List<(string display, int dist)>();
+            using var conn = new SqliteConnection(new SqliteConnectionStringBuilder { DataSource = dbPath }.ToString());
+            await conn.OpenAsync();
+            var cmd = conn.CreateCommand();
+            cmd.CommandText = @"SELECT DISTINCT display_headword, search_key FROM entries
+                                WHERE search_key LIKE @prefix
+                                ORDER BY search_key LIMIT 3000";
+            cmd.Parameters.AddWithValue("@prefix", key[0] + "%");
+            using var rdr = await cmd.ExecuteReaderAsync();
+            while (await rdr.ReadAsync())
+            {
+                var sk = rdr.GetString(1);
+                if (Math.Abs(sk.Length - key.Length) > maxDistance) continue;
+                var dist = EditDistance(key, sk);
+                if (dist > 0 && dist <= maxDistance)
+                    results.Add((rdr.GetString(0), dist));
+            }
+            return results.OrderBy(r => r.dist).ThenBy(r => r.display).Take(limit).Select(r => r.display).ToList();
+        }
 
         public static string NormalizePos(string p)
         {
@@ -126,10 +169,23 @@ namespace AkkDictionaryApp
         public bool RememberWindow { get; set; } = true;
         public double? WindowWidth { get; set; }
         public double? WindowHeight { get; set; }
+        public List<string> SearchHistory { get; set; } = new();
+        public bool DarkMode { get; set; } = false;
+        public List<string> Bookmarks { get; set; } = new();
+        public double ListColumnWidth { get; set; } = 420;
+
+        public void AddToHistory(string query)
+        {
+            if (string.IsNullOrWhiteSpace(query)) return;
+            SearchHistory.Remove(query);
+            SearchHistory.Insert(0, query);
+            if (SearchHistory.Count > 20)
+                SearchHistory.RemoveRange(20, SearchHistory.Count - 20);
+        }
 
         public static AppSettings Load(string path)
-        { try{ if (File.Exists(path)){ var json=System.Text.Json.JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(path)); if (json!=null) return json; } } catch {} return new AppSettings(); }
+        { try{ if (File.Exists(path)){ var json=System.Text.Json.JsonSerializer.Deserialize<AppSettings>(File.ReadAllText(path)); if (json!=null) return json; } } catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Settings] Load failed: {ex.Message}"); } return new AppSettings(); }
         public static void Save(AppSettings s, string path)
-        { try{ var json=System.Text.Json.JsonSerializer.Serialize(s, new System.Text.Json.JsonSerializerOptions{ WriteIndented=true }); File.WriteAllText(path, json);} catch{} }
+        { try{ var json=System.Text.Json.JsonSerializer.Serialize(s, new System.Text.Json.JsonSerializerOptions{ WriteIndented=true }); File.WriteAllText(path, json);} catch (Exception ex) { System.Diagnostics.Debug.WriteLine($"[Settings] Save failed: {ex.Message}"); } }
     }
 }

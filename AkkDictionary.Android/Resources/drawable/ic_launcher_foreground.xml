@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Open book icon for AKK Dictionary -->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Left page of open book -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M54,24 L18,33 L18,82 L54,73 Z"/>
+
+    <!-- Right page of open book -->
+    <path
+        android:fillColor="#BBDEFB"
+        android:pathData="M54,24 L90,33 L90,82 L54,73 Z"/>
+
+    <!-- Book spine -->
+    <path
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:pathData="M54,24 L54,73"/>
+
+    <!-- Text lines — left page -->
+    <path
+        android:strokeColor="#90CAF9"
+        android:strokeWidth="2.2"
+        android:pathData="M24,43 L50,38"/>
+    <path
+        android:strokeColor="#90CAF9"
+        android:strokeWidth="2.2"
+        android:pathData="M24,52 L50,47"/>
+    <path
+        android:strokeColor="#90CAF9"
+        android:strokeWidth="2.2"
+        android:pathData="M24,61 L50,56"/>
+    <path
+        android:strokeColor="#90CAF9"
+        android:strokeWidth="2.2"
+        android:pathData="M24,70 L44,65"/>
+
+    <!-- Text lines — right page -->
+    <path
+        android:strokeColor="#1E88E5"
+        android:strokeWidth="2.2"
+        android:pathData="M58,38 L84,43"/>
+    <path
+        android:strokeColor="#1E88E5"
+        android:strokeWidth="2.2"
+        android:pathData="M58,47 L84,52"/>
+    <path
+        android:strokeColor="#1E88E5"
+        android:strokeWidth="2.2"
+        android:pathData="M58,56 L84,61"/>
+    <path
+        android:strokeColor="#1E88E5"
+        android:strokeWidth="2.2"
+        android:pathData="M58,65 L78,70"/>
+
+</vector>

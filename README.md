@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE.txt)
 [![Platform](https://img.shields.io/badge/Platform-Windows%2010%2B-blue)](https://github.com/aungkokomm/English-Myanmar-Dictionary-/releases)
 [![Android](https://img.shields.io/badge/Platform-Android%208%2B-brightgreen)](https://github.com/aungkokomm/English-Myanmar-Dictionary-/releases)
-[![Framework](https://img.shields.io/badge/.NET-8-purple)](https://dotnet.microsoft.com/)
+[![Framework](https://img.shields.io/badge/.NET-10-purple)](https://dotnet.microsoft.com/)
 
 A fast, offline English ↔ Myanmar dictionary for Windows and Android. No internet connection required — the full database is bundled with the app.
 
@@ -56,7 +56,7 @@ Go to the [**Releases**](https://github.com/aungkokomm/English-Myanmar-Dictionar
 
 ## Building from Source
 
-**Prerequisites:** .NET 8 SDK, Visual Studio 2022 (or `dotnet` CLI)
+**Prerequisites:** .NET 10 SDK, Visual Studio 2026 (or `dotnet` CLI)
 
 ```bash
 git clone https://github.com/aungkokomm/English-Myanmar-Dictionary-.git
@@ -109,7 +109,7 @@ Output: `installer/output/AkkDictionary-x.x.x-Setup.exe`
 │   └── akk.ico
 ├── installer/
 │   └── AkkDictionary.iss         # Inno Setup script
-├── AkkDictionary.Android/        # Android (Xamarin.Android) project
+├── AkkDictionary.Android/        # Android (.NET for Android) project
 └── dictionary.db                 # Bundled SQLite dictionary database
 ```
 
