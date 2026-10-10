@@ -5,7 +5,7 @@
 [![Android](https://img.shields.io/badge/Platform-Android%208%2B-brightgreen)](https://github.com/aungkokomm/English-Myanmar-Dictionary-/releases)
 [![Framework](https://img.shields.io/badge/.NET-10-purple)](https://dotnet.microsoft.com/)
 
-A fast, offline English ↔ Myanmar dictionary for Windows and Android. No internet connection required — the full database is bundled with the app.
+A fast, offline English ↔ Myanmar dictionary for Windows and Android. No internet connection required - the full database is bundled with the app.
 
 ---
 
@@ -96,7 +96,7 @@ Output: `installer/output/AkkDictionary-x.x.x-Setup.exe`
 ## Project Structure
 
 ```
-├── MainWindow.xaml(.cs)          # Main window — search, list, detail pane
+├── MainWindow.xaml(.cs)          # Main window - search, list, detail pane
 ├── SettingsWindow.xaml(.cs)      # Settings dialog
 ├── SqliteImportWindow.xaml(.cs)  # SQLite import dialog
 ├── AboutWindow.xaml(.cs)         # About dialog
@@ -128,4 +128,8 @@ Please make sure the project builds without errors before submitting.
 
 ## License
 
-[MIT License](LICENSE.txt) — © Aung Ko Ko
+[MIT License](LICENSE.txt) - © Aung Ko Ko
+
+---
+
+<p align="center"><sub>© 2026 Aung Ko Ko · <a href="https://aungkokomm.github.io/">more of my apps</a></sub></p>
